@@ -1,0 +1,4 @@
+displayName = Terra Trial: the City Trial Mod!
+modReferences = SubworldLibrary
+author = billybobmcbo
+version = 0.1

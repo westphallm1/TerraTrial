@@ -1,0 +1,194 @@
+[22:15:12.879] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Reset
+[22:15:12.890] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Reset
+[22:15:12.896] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Terrain
+[22:15:13.408] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Terrain
+[22:15:13.415] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Dunes
+[22:15:13.543] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Dunes
+[22:15:13.548] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Sand Patches
+[22:15:14.714] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Sand Patches
+[22:15:14.720] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Tunnels
+[22:15:14.734] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Tunnels
+[22:15:14.738] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Mount Caves
+[22:15:14.773] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Mount Caves
+[22:15:14.796] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Dirt Wall Backgrounds
+[22:15:15.051] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Dirt Wall Backgrounds
+[22:15:15.056] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Rocks In Dirt
+[22:15:16.244] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Rocks In Dirt
+[22:15:16.249] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Dirt In Rocks
+[22:15:17.581] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Dirt In Rocks
+[22:15:17.585] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Clay
+[22:15:17.743] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Clay
+[22:15:17.753] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Small Holes
+[22:15:20.087] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Small Holes
+[22:15:20.094] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Dirt Layer Caves
+[22:15:20.320] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Dirt Layer Caves
+[22:15:20.328] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Rock Layer Caves
+[22:15:22.958] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Rock Layer Caves
+[22:15:22.965] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Surface Caves
+[22:15:23.040] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Surface Caves
+[22:15:23.046] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Wavy Caves
+[22:15:23.053] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Wavy Caves
+[22:15:23.058] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Generate Ice Biome
+[22:15:23.172] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Generate Ice Biome
+[22:15:23.180] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Grass
+[22:15:23.216] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Grass
+[22:15:23.220] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Jungle
+[22:15:36.824] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Jungle
+[22:15:36.830] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Mud Caves To Grass
+[22:15:38.375] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Mud Caves To Grass
+[22:15:38.379] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Full Desert
+[22:15:45.228] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Full Desert
+[22:15:45.233] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Floating Islands
+[22:15:47.919] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Floating Islands
+[22:15:47.934] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Mushroom Patches
+[22:15:52.128] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Mushroom Patches
+[22:15:52.133] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Marble
+[22:15:52.714] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Marble
+[22:15:52.735] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Granite
+[22:15:55.459] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Granite
+[22:15:55.465] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Dirt To Mud
+[22:15:55.771] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Dirt To Mud
+[22:15:55.776] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Silt
+[22:15:55.934] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Silt
+[22:15:55.939] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Shinies
+[22:15:56.150] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Shinies
+[22:15:56.155] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Webs
+[22:15:56.201] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Webs
+[22:15:56.206] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Lakes
+[22:15:56.278] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Lakes
+[22:15:56.283] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Dungeon
+[22:15:56.293] [.NET TP Worker/INFO] [StatusText]: Creating dungeon
+[22:15:59.018] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Dungeon
+[22:15:59.022] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Slush
+[22:15:59.071] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Slush
+[22:15:59.077] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Mountain Caves
+[22:15:59.096] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Mountain Caves
+[22:15:59.117] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Gems
+[22:15:59.642] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Gems
+[22:15:59.646] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Gravitating Sand
+[22:16:00.066] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Gravitating Sand
+[22:16:00.071] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Clean Up Dirt
+[22:16:01.224] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Clean Up Dirt
+[22:16:01.233] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Pyramids
+[22:16:01.239] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Pyramids
+[22:16:01.245] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Dirt Rock Wall Runner
+[22:16:01.357] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Dirt Rock Wall Runner
+[22:16:01.361] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Living Trees
+[22:16:01.366] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Living Trees
+[22:16:01.372] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Wood Tree Walls
+[22:16:01.518] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Wood Tree Walls
+[22:16:01.524] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Altars
+[22:16:01.564] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Altars
+[22:16:01.570] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Wet Jungle
+[22:16:01.585] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Wet Jungle
+[22:16:01.590] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Jungle Temple
+[22:16:01.596] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Jungle Temple
+[22:16:01.604] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Hives
+[22:16:02.285] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Hives
+[22:16:02.290] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Jungle Chests
+[22:16:02.298] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Jungle Chests
+[22:16:02.304] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Settle Liquids
+[22:16:02.313] [.NET TP Worker/INFO] [StatusText]: Settling liquids
+[22:16:08.498] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Settle Liquids
+[22:16:08.506] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Remove Water From Sand
+[22:16:08.517] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Remove Water From Sand
+[22:16:08.523] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Oasis
+[22:16:08.553] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Oasis
+[22:16:08.557] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Smooth World
+[22:16:15.341] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Smooth World
+[22:16:15.347] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Waterfalls
+[22:16:17.113] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Waterfalls
+[22:16:17.158] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Ice
+[22:16:17.280] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Ice
+[22:16:17.287] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Wall Variety
+[22:16:22.308] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Wall Variety
+[22:16:22.312] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Life Crystals
+[22:16:22.318] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Life Crystals
+[22:16:22.323] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Statues
+[22:16:22.547] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Statues
+[22:16:22.568] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Buried Chests
+[22:16:23.310] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Buried Chests
+[22:16:23.315] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Surface Chests
+[22:16:23.526] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Surface Chests
+[22:16:23.531] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Jungle Chests Placement
+[22:16:23.537] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Jungle Chests Placement
+[22:16:23.560] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Water Chests
+[22:16:23.580] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Water Chests
+[22:16:23.586] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Spider Caves
+[22:16:27.373] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Spider Caves
+[22:16:27.377] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Gem Caves
+[22:16:27.455] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Gem Caves
+[22:16:27.459] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Moss
+[22:16:28.748] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Moss
+[22:16:28.755] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Cave Walls
+[22:16:32.548] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Cave Walls
+[22:16:32.553] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Jungle Trees
+[22:16:32.989] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Jungle Trees
+[22:16:33.010] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Floating Island Houses
+[22:16:33.016] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Floating Island Houses
+[22:16:33.021] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Quick Cleanup
+[22:16:34.012] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Quick Cleanup
+[22:16:34.017] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Pots
+[22:16:35.334] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Pots
+[22:16:35.339] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Spreading Grass
+[22:16:36.124] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Spreading Grass
+[22:16:36.128] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Surface Ore and Stone
+[22:16:36.201] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Surface Ore and Stone
+[22:16:36.205] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Place Fallen Log
+[22:16:36.211] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Place Fallen Log
+[22:16:36.233] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Traps
+[22:16:41.655] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Traps
+[22:16:41.661] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Piles
+[22:16:41.955] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Piles
+[22:16:41.959] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Spawn Point
+[22:16:41.963] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Spawn Point
+[22:16:41.968] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Grass Wall
+[22:16:42.524] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Grass Wall
+[22:16:42.528] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Sunflowers
+[22:16:42.541] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Sunflowers
+[22:16:42.562] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Planting Trees
+[22:16:43.112] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Planting Trees
+[22:16:43.118] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Herbs
+[22:16:43.165] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Herbs
+[22:16:43.169] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Dye Plants
+[22:16:44.528] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Dye Plants
+[22:16:44.532] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Webs And Honey
+[22:16:45.441] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Webs And Honey
+[22:16:45.445] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Weeds
+[22:16:45.977] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Weeds
+[22:16:45.981] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Glowing Mushrooms and Jungle Plants
+[22:16:46.474] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Glowing Mushrooms and Jungle Plants
+[22:16:46.479] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Jungle Plants
+[22:16:47.771] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Jungle Plants
+[22:16:47.775] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Vines
+[22:16:49.758] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Vines
+[22:16:49.765] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Flowers
+[22:16:49.919] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Flowers
+[22:16:49.924] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Mushrooms
+[22:16:49.929] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Mushrooms
+[22:16:49.934] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Gems In Ice Biome
+[22:16:49.945] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Gems In Ice Biome
+[22:16:49.953] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Random Gems
+[22:16:49.991] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Random Gems
+[22:16:50.012] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Moss Grass
+[22:16:50.582] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Moss Grass
+[22:16:50.586] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Muds Walls In Jungle
+[22:16:50.642] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Muds Walls In Jungle
+[22:16:50.648] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Larva
+[22:16:50.670] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Larva
+[22:16:50.674] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Settle Liquids Again
+[22:16:56.926] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Settle Liquids Again
+[22:16:56.930] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Cactus, Palm Trees, & Coral
+[22:16:58.261] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Cactus, Palm Trees, & Coral
+[22:16:58.266] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Tile Cleanup
+[22:17:00.847] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Tile Cleanup
+[22:17:00.871] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Micro Biomes
+[22:17:08.441] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Micro Biomes
+[22:17:08.446] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Water Plants
+[22:17:09.052] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Water Plants
+[22:17:09.057] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Stalac
+[22:17:10.963] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Stalac
+[22:17:10.978] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Remove Broken Traps
+[22:17:11.286] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Remove Broken Traps
+[22:17:11.291] [.NET TP Worker/INFO] [TerraTrial]: Starting GenPass Final Cleanup
+[22:17:14.651] [.NET TP Worker/INFO] [TerraTrial]: Finishing GenPass Final Cleanup
