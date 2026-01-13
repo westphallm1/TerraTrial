@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using SubworldLibrary;
 using Terraria;
@@ -10,7 +11,7 @@ namespace TerraTrial.Content.Subworlds;
 
 public class TerraTrialWorldSystem : ModSystem
 {
-    public int Width => 1800;
+    public int Width => 2000;
 
     public int Height => 900;
     
@@ -37,7 +38,7 @@ public class TerraTrialWorld : Subworld
     public override List<GenPass> Tasks => [
         new SeedGenPass(),
         new StandardWorldGenPass(),
-        new ZoneDiscoveryGenPass(),
+        new ConnectLargeZonesGenPass(),
     ];
     
     public override void OnEnter()
@@ -66,54 +67,48 @@ internal class StandardWorldGenPass() : GenPass("Standard World", 100)
     }
 }
 
-internal class ZoneDiscoveryGenPass() : GenPass("Connect Zones", 1)
-{
-    protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
-    {
-        var worldSys = ModContent.GetInstance<TerraTrialWorldSystem>();
-        var zones = worldSys.Zones;
-        
-        (int, int) start = (Main.spawnTileX, Main.spawnTileY);
-        var fillQueue = new Stack<(int, int)>();
-        fillQueue.Push(start);
-
-        ModContent.GetInstance<TerraTrial>().Logger.Info("Finding Contiguous Regions");
-        var steps = 0;
-        while (fillQueue.Count > 0)
-        {
-            var current = fillQueue.Pop();
-            for(var i = -1; i <= 1; i+=2)
-            {
-                for(var j = -1; j <= 1; j+=2)
-                {
-                    steps += 1;
-                    var x = current.Item1 + i;
-                    var y = current.Item2 + j;
-                    if (x <= 0 || y < 0 || x >= worldSys.Width || y >= worldSys.Height)
-                    {
-                        continue;
-                    }
-                    var tile = Main.tile[x, y];
-                    if (tile is { HasTile: true, BlockType: BlockType.Solid } || zones[x, y] != 0) continue;
-                    zones[x, y] = 1;
-                    fillQueue.Push((x, y));
-                }
-            }
-            
-        }
-        ModContent.GetInstance<TerraTrial>().Logger.Info($"Filled Queue in {steps} steps");
-    }
-}
 
 public class GenPassWrapper(GenPass other) : GenPass(other.Name, other.Weight)
 {
     protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
     {
         ModContent.GetInstance<TerraTrial>().Logger.Info($"Starting GenPass {Name}");
-        other.Apply(progress, configuration);
+        // Some passes (mainly the initial reset) can error out with a small world size, try to brute force it
+        for (var _ = 0; _ < 5; _++)
+        {
+            try
+            {
+                other.Apply(progress, configuration);
+                break;
+            }
+            catch (Exception e)
+            {
+                ModContent.GetInstance<TerraTrial>().Logger.Error("Exception during tiny world generation", e);
+                // continue
+            } 
+        }
         ModContent.GetInstance<TerraTrial>().Logger.Info($"Finishing GenPass {Name}");
     }
 }
+
+public class RemoveCaveWaterGenPass() : GenPass("Remove Cave Water", 0.01f)
+{
+    protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
+    {
+        for (var i = 0; i < Main.maxTilesX; i++)
+        {
+            for (var k = Main.spawnTileY; k < Main.maxTilesY; k++)
+            {
+                var tile = Main.tile[i, k];
+                if (tile is { LiquidType: LiquidID.Water, LiquidAmount: > 0 })
+                {
+                    tile.LiquidAmount = 0;
+                }
+            }
+        }
+    }
+}
+
 public class TrialWorldVanillaGen : ModSystem
 {
     public override void OnModLoad()
@@ -152,10 +147,10 @@ public class TrialWorldVanillaGen : ModSystem
         // Remove the oceans, underworld, shimmer, corruption, and jungle temple from the list of generation tasks
         List<string> toRemove =
         [
+            // GenPasses for unnecessary features
             "Ocean Sand",
             "Create Ocean Caves",
-            "Corruption",
-            "Underworld",
+            // "Corruption",
             "Guide",
             "Temple",
             "Hellforge",
@@ -163,17 +158,31 @@ public class TrialWorldVanillaGen : ModSystem
             "Shimmer",
             "Shell Piles",
             "Beaches",
+            
+            // Relatively minor GenPasses that take >= 3 seconds :(
+            // "Small Holes",
+            "Micro Biomes",
+            "Spider Caves"
         ];
         foreach (var layer in toRemove)
         {
             var idx = tasks.FindIndex(t => t.Name == layer);
             tasks.RemoveAt(idx);
         }
-
+        
+        // For debugging, wrap vanilla GenPasses in additional logging
         for (int i = 0; i < tasks.Count; i++)
         {
             tasks[i] = new GenPassWrapper(tasks[i]);
         }
+        
+        // Add a GenPass to space out structures further post-reset since there's no oceans
+        var resetIdx = tasks.FindIndex(t => t.Name == "Reset");
+        tasks.Insert(resetIdx + 1, new UpdateLocationsNoOceansGenPass());
+        
+        // Add a GenPass to remove cave water prior to settling liquids
+        var liquidIdx = tasks.FindIndex(t => t.Name == "Settle Liquids");
+        tasks.Insert(liquidIdx, new RemoveCaveWaterGenPass());
         
         Mod.Logger.Info($"Kept {tasks.Count} tasks");
     }
