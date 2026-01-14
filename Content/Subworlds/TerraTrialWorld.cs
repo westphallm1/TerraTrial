@@ -19,9 +19,14 @@ public class TerraTrialWorldSystem : ModSystem
     
     public override void Load()
     {
-        Zones = new int[Width, Height];
+        ResetZones();
     }
 
+    public void ResetZones()
+    {
+        Zones = new int[Width, Height];
+    }
+    
     public override void Unload()
     {
         Zones = null;
