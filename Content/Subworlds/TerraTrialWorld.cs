@@ -9,33 +9,14 @@ using Terraria.WorldBuilding;
 
 namespace TerraTrial.Content.Subworlds;
 
-public class TerraTrialWorldSystem : ModSystem
-{
-    public int Width => 2000;
 
-    public int Height => 900;
-    
-    public int[,] Zones { get; private set; }
-    
-    public override void Load()
-    {
-        ResetZones();
-    }
-
-    public void ResetZones()
-    {
-        Zones = new int[Width, Height];
-    }
-    
-    public override void Unload()
-    {
-        Zones = null;
-    }
-}
 public class TerraTrialWorld : Subworld
 {
-    public override int Width => ModContent.GetInstance<TerraTrialWorldSystem>().Width;
-    public override int Height => ModContent.GetInstance<TerraTrialWorldSystem>().Height;
+    public const int WorldWidth = 2000;
+
+    public const int WorldHeight = 900;
+    public override int Width => WorldWidth;
+    public override int Height => WorldHeight;
 
     public override bool NoPlayerSaving => true;
     public override bool ShouldSave => false;
