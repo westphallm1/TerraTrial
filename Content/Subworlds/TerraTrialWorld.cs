@@ -147,13 +147,34 @@ public class TrialWorldVanillaGen : ModSystem
             
             // Relatively minor GenPasses that take >= 3 seconds :(
             // "Small Holes",
-            "Micro Biomes",
-            "Spider Caves"
+            // "Micro Biomes",
+            "Spider Caves",
+            
+            // Webs slow down movement too much
+            "Webs",
+            
+            // Hives serve no purpose for this
+            "Hives",
         ];
+        
+        // We want to double the creation of chest-placing world gen steps for increased interact-ables
+        List<string> toDouble = 
+        [
+            "Jungle Chests",
+            "Buried Chests",
+            "Surface Chests",
+        ];
+        
         foreach (var layer in toRemove)
         {
             var idx = tasks.FindIndex(t => t.Name == layer);
             tasks.RemoveAt(idx);
+        }
+
+        foreach (var layer in toDouble)
+        {
+            var idx = tasks.FindIndex(t => t.Name == layer);
+            tasks.Insert(idx + 1, tasks[idx]);
         }
         
         // For debugging, wrap vanilla GenPasses in additional logging
@@ -168,6 +189,9 @@ public class TrialWorldVanillaGen : ModSystem
         
         // Add a GenPass to remove cave water prior to settling liquids
         var liquidIdx = tasks.FindIndex(t => t.Name == "Settle Liquids");
+        tasks.Insert(liquidIdx, new RemoveCaveWaterGenPass());
+        
+        liquidIdx = tasks.FindIndex(t => t.Name == "Settle Liquids Again");
         tasks.Insert(liquidIdx, new RemoveCaveWaterGenPass());
         
         Mod.Logger.Info($"Kept {tasks.Count} tasks");
