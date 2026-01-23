@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
 using SubworldLibrary;
 using Terraria;
 using Terraria.ID;
 using Terraria.IO;
 using Terraria.ModLoader;
+using Terraria.Utilities;
 using Terraria.WorldBuilding;
 
 namespace TerraTrial.Content.Subworlds;
@@ -30,6 +33,32 @@ public class TerraTrialWorld : Subworld
     public override void OnEnter()
     {
         SubworldSystem.hideUnderworld = false;
+    }
+
+    private static void SafeMultColor(ref Vector3 color)
+    {
+        if (!((color.X + color.Y + color.Z) / 3f < 0.5f)) return;
+        color.X = Math.Max(color.X, 0.5f);
+        color.Y = Math.Max(color.Y, 0.5f);
+        color.Z = Math.Max(color.Z, 0.5f);
+
+    }
+
+    public override bool GetLight(Tile tile, int x, int y, ref FastRandom rand, ref Vector3 color)
+    {
+        // light up tiles near the player that are inside the explorable zone
+        var lightDist = 16;
+        var system = ModContent.GetInstance<WorldZonesModSystem>();
+        var zones = system.Zones;
+        var xIdx = x / system.XDownSample;
+        var yIdx =  y / system.YDownSample;
+        var player = Main.LocalPlayer;
+        if (zones[xIdx, yIdx] != 0 && (player.position / 16).DistanceSQ(new Vector2(x, y)) < lightDist * lightDist)
+        {
+            SafeMultColor(ref color);
+            return true;
+        }
+        return base.GetLight(tile, x, y, ref rand, ref color);
     }
 }
 
@@ -101,7 +130,7 @@ public class TrialWorldVanillaGen : ModSystem
     {
         On_WorldGen.makeTemple += On_WorldGenOnmakeTemple;
         On_WorldGen.ShimmerCleanUp += On_WorldGenOnShimmerCleanUp;
-
+        
     }
     // We don't need a shimmer in the super-small map
     private void On_WorldGenOnShimmerCleanUp(On_WorldGen.orig_ShimmerCleanUp orig)

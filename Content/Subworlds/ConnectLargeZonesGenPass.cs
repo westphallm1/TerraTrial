@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.IO;
 using Terraria.ModLoader;
+using Terraria.ObjectData;
 using Terraria.WorldBuilding;
 
 namespace TerraTrial.Content.Subworlds;
 
-static class PointExtensions
+internal static class PointExtensions
 {
     internal static int DistanceSquared(this Point p1, Point p2)
     {
@@ -67,7 +69,46 @@ internal class ClearNonimportantTiles : GenAction
         {
             WorldUtils.ClearTile(x, y, true);
         }
-        return true;
+        return UnitApply(origin, x, y, args);
+    }
+}
+
+/// <summary>
+/// GenAction to mark an excavated tile as traversable
+/// </summary>
+internal class MarkTileAsTraversable : GenAction
+{
+    public override bool Apply(Point origin, int x, int y, params object[] args)
+    {
+        var system = ModContent.GetInstance<WorldZonesModSystem>();
+        system.Zones[x / system.XDownSample, y / system.YDownSample] = -1;
+        return UnitApply(origin, x, y, args);
+    }
+}
+
+internal class PlatformFrameImportant : GenAction
+{
+    public override bool Apply(Point origin, int x, int y, params object[] args)
+    {
+        var tile = Main.tile[x, y];
+        var aboveTile = Main.tile[x, y - 1];
+        var belowTile = Main.tile[x, y + 1];
+        
+        if (!tile.HasTile && aboveTile != null && aboveTile.HasTile && Main.tileFrameImportant[aboveTile.TileType] &&
+            TileObjectData.GetTileData(aboveTile) is { } aData && aData.AnchorBottom != AnchorData.Empty)
+        {
+            tile.HasTile = true;
+            tile.TileType = TileID.Platforms;
+        }
+        
+        if (!tile.HasTile && belowTile != null && belowTile.HasTile && Main.tileFrameImportant[belowTile.TileType] &&
+            TileObjectData.GetTileData(belowTile) is { } bData && bData.AnchorTop != AnchorData.Empty)
+        {
+            tile.HasTile = true;
+            tile.TileType = TileID.Platforms;
+        }
+
+        return UnitApply(origin, x, y, args);
     }
 }
 
@@ -294,7 +335,12 @@ internal class WorldZonesModSystem() : ModSystem
             WorldUtils.Gen(
                 worldCoordsStart, 
                 new RectangleToPoint(worldCoordsEnd, 4), 
-                new ClearNonimportantTiles());
+                Actions.Chain(
+                        new MarkTileAsTraversable(),
+                        new ClearNonimportantTiles(),
+                        new PlatformFrameImportant()
+                    )
+                );
         }
         
     }
