@@ -67,7 +67,7 @@ internal class ClearNonimportantTiles : GenAction
         var tile = Main.tile[x, y];
         if (!Main.tileFrameImportant[tile.TileType])
         {
-            WorldUtils.ClearTile(x, y, true);
+            WorldUtils.ClearTile(x, y);
         }
         return UnitApply(origin, x, y, args);
     }
@@ -86,6 +86,9 @@ internal class MarkTileAsTraversable : GenAction
     }
 }
 
+/// <summary>
+/// Place wooden platforms under frameImportant tiles that are floating in mid-air
+/// </summary>
 internal class PlatformFrameImportant : GenAction
 {
     public override bool Apply(Point origin, int x, int y, params object[] args)
@@ -94,18 +97,39 @@ internal class PlatformFrameImportant : GenAction
         var aboveTile = Main.tile[x, y - 1];
         var belowTile = Main.tile[x, y + 1];
         
-        if (!tile.HasTile && aboveTile != null && aboveTile.HasTile && Main.tileFrameImportant[aboveTile.TileType] &&
+        if (!tile.HasTile && aboveTile.HasTile && Main.tileFrameImportant[aboveTile.TileType] &&
             TileObjectData.GetTileData(aboveTile) is { } aData && aData.AnchorBottom != AnchorData.Empty)
         {
             tile.HasTile = true;
             tile.TileType = TileID.Platforms;
         }
         
-        if (!tile.HasTile && belowTile != null && belowTile.HasTile && Main.tileFrameImportant[belowTile.TileType] &&
+        if (!tile.HasTile && belowTile.HasTile && Main.tileFrameImportant[belowTile.TileType] &&
             TileObjectData.GetTileData(belowTile) is { } bData && bData.AnchorTop != AnchorData.Empty)
         {
             tile.HasTile = true;
             tile.TileType = TileID.Platforms;
+        }
+
+        return UnitApply(origin, x, y, args);
+    }
+}
+
+internal class ReplaceSurroundingSolidTilesWith(ushort tileId) : GenAction
+{
+    public override bool Apply(Point origin, int x, int y, params object[] args)
+    {
+        var tile = Main.tile[x, y];
+        if (!tile.HasTile) return UnitApply(origin, x, y, args);
+
+        for (var i = -1; i <= 1; i++)
+        {
+            for (var j = -1; j <= 1; j++)
+            {
+                var adjacent = Main.tile[x + i, y + j];
+                if(!WorldZonesModSystem.IsSolid(adjacent)) continue;
+                adjacent.TileType = tileId;
+            }
         }
 
         return UnitApply(origin, x, y, args);
@@ -137,7 +161,7 @@ internal class WorldZonesModSystem() : ModSystem
 
     
     
-    private static bool IsSolid(Tile t) => t.HasTile && t.TileType != TileID.ClosedDoor && Main.tileSolid[t.TileType] && ! Main.tileSolidTop[t.TileType];
+    internal static bool IsSolid(Tile t) => t.HasTile && t.TileType != TileID.ClosedDoor && Main.tileSolid[t.TileType] && ! Main.tileSolidTop[t.TileType];
     
     public override void Load()
     {
@@ -301,7 +325,6 @@ internal class WorldZonesModSystem() : ModSystem
         return minP1 != default && minP2 != default;
     }
     
-    private void ClearTilesInDiagonal(Point startPoint, Point endPoint) {}
     /// <summary>
     /// Given a list of the edges of the contiguous zones of the map, find the
     /// points of other contiguous zones which come the closest to intersecting
@@ -411,9 +434,9 @@ internal class WorldZonesModSystem() : ModSystem
         
         ClearTilesBetweenNearpoints(nearPoints);
         
-        DebugAddWallsToEdges(edges);
+        // DebugAddWallsToEdges(edges);
         
-        DebugAddWallsToZoneNearPoints(nearPoints);
+        // DebugAddWallsToZoneNearPoints(nearPoints);
     }
 
     

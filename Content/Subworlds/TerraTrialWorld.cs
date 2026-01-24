@@ -35,27 +35,39 @@ public class TerraTrialWorld : Subworld
         SubworldSystem.hideUnderworld = false;
     }
 
-    private static void SafeMultColor(ref Vector3 color)
+    private static void SafeMultColor(ref Vector3 color, float threshold = 0.5f)
     {
-        if (!((color.X + color.Y + color.Z) / 3f < 0.5f)) return;
-        color.X = Math.Max(color.X, 0.5f);
-        color.Y = Math.Max(color.Y, 0.5f);
-        color.Z = Math.Max(color.Z, 0.5f);
+        if (!((color.X + color.Y + color.Z) / 3f < threshold)) return;
+        color.X = Math.Max(color.X, threshold);
+        color.Y = Math.Max(color.Y, threshold);
+        color.Z = Math.Max(color.Z, threshold);
 
     }
 
     public override bool GetLight(Tile tile, int x, int y, ref FastRandom rand, ref Vector3 color)
     {
         // light up tiles near the player that are inside the explorable zone
-        var lightDist = 16;
+        const int lightDist = 16;
         var system = ModContent.GetInstance<WorldZonesModSystem>();
         var zones = system.Zones;
         var xIdx = x / system.XDownSample;
         var yIdx =  y / system.YDownSample;
         var player = Main.LocalPlayer;
-        if (zones[xIdx, yIdx] != 0 && (player.position / 16).DistanceSQ(new Vector2(x, y)) < lightDist * lightDist)
+        if (zones[xIdx, yIdx] != 0 && 
+            (player.position / 16).DistanceSQ(new Vector2(x, y)) < lightDist * lightDist)
         {
             SafeMultColor(ref color);
+            return true;
+        } 
+        if (zones[xIdx, yIdx] != 0)
+        {
+            // Give very dim glow to all traversable tiles
+            SafeMultColor(ref color, 0.15f);
+        }
+        if (tile is { HasTile: true, TileType: TileID.Containers })
+        {
+            // TODO different color based on chest type
+            color = Vector3.One;
             return true;
         }
         return base.GetLight(tile, x, y, ref rand, ref color);
