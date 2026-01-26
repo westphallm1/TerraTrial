@@ -9,4 +9,7 @@ public class StatScalingExtraJump : ExtraJump
 
     public override float GetDurationMultiplier(Player player) =>
         0.75f + player.GetModPlayer<TerraTrialPlayer>().Jump / 10f;
+
+    public override void ShowVisuals(Player player) =>
+        CloudInABottle.ShowVisuals(player);
 }
