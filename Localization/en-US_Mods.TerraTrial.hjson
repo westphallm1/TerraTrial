@@ -1,1 +1,21 @@
+Items: {
+	AttackPatch: {
+		DisplayName: Attack Patch
+		Tooltip: ""
+	}
 
+	FlightPatch: {
+		DisplayName: Flight Patch
+		Tooltip: ""
+	}
+
+	HeartPatch: {
+		DisplayName: Heart Patch
+		Tooltip: ""
+	}
+
+	SpeedPatch: {
+		DisplayName: Speed Patch
+		Tooltip: ""
+	}
+}

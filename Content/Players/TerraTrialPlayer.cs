@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TerraTrial.Content.Items;
 using TerraTrial.Content.Subworlds;
 
 namespace TerraTrial.Content.Players;
@@ -18,9 +19,11 @@ public class TerraTrialPlayer : ModPlayer
     public const int JumpWings = 9;
     
     
-    internal int Speed { get; set; } = 1;
+    internal int Speed { get; set; } 
+    internal int Jump { get; set; }
+    public int Health { get; set; }
     
-    internal int Jump { get; set; } = 1;
+    public int Attack { get; set; }
 
     public override void OnEnterWorld()
     {
@@ -52,7 +55,7 @@ public class TerraTrialPlayer : ModPlayer
         base.ModifyMaxStats(out health, out mana);
         if (SubworldSystem.IsActive<TerraTrialWorld>())
         {
-            health.Base = 25;
+            health.Base = 10 * Health;
         }
     }
 
@@ -77,12 +80,16 @@ public class TerraTrialPlayer : ModPlayer
         if (Jump >= JumpWings)
         {
             Player.wingsLogic = 1;
+            // Need to have a real wings in a real wing slot to trigger wing logic
+            Player.armor[5].SetDefaults(ItemID.AngelWings);
             Player.armor[15].SetDefaults(ItemID.AngelWings);
         }
         
         // QOL features, autoswing and no fall damage
         Player.autoReuseAllWeapons = true;
         Player.noFallDmg = true;
+        
+        
     }
 
     public override void PostUpdateRunSpeeds()
@@ -146,9 +153,13 @@ public class ItemRemovalModSystem() : ModSystem
         var chest = Main.chest[newChest];
         if(_openedChests.Contains(chest)) return;
         _openedChests.Add(chest);
+        for (var i = 0; i < 3; i++)
+        {
+            var itemType = ItemPatch.PatchIDs[Main._rand.Next(ItemPatch.PatchIDs.Count)];
+            var itemIdx = Item.NewItem(self.GetSource_FromThis(), new Vector2(x * 16, y * 16), itemType);
+            Main.item[itemIdx].velocity = Vector2.UnitX.RotatedBy(- MathF.PI / 4 - MathF.PI * i /4) * Main._rand.Next(20, 40)/10f;
+        }
         var player = self.GetModPlayer<TerraTrialPlayer>();
-        player.Jump += 1;
-        player.Speed += 1;
         Main.NewText($"Player stats updated! Speed: {player.Speed}, Jump {player.Jump}");
     }
 
@@ -157,6 +168,7 @@ public class ItemRemovalModSystem() : ModSystem
         if (!SubworldSystem.IsActive<TerraTrialWorld>()) return;
         foreach (var item in Main.item)
         {
+            if(item?.ModItem?.Mod == ModContent.GetInstance<TerraTrial>()) continue;
             item?.TurnToAir();
         }
     }
