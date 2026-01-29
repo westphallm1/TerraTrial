@@ -40,7 +40,7 @@ public class TerraTrialPlayer : ModPlayer
             Player.inventory[i].TurnToAir();
         }
         
-        // Give a new set of default
+        // Give a new set of default items
         Player.inventory[0].SetDefaults(ItemID.GoldBroadsword);
         Player.inventory[0].stack = 1;
 
@@ -59,6 +59,11 @@ public class TerraTrialPlayer : ModPlayer
         {
             health.Base = 10 * Health;
         }
+    }
+
+    public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
+    {
+        damage.Base += Attack * 2;
     }
 
     public override void PostUpdateMiscEffects()
@@ -93,12 +98,17 @@ public class TerraTrialPlayer : ModPlayer
             Player.armor[5].SetDefaults(ItemID.AngelWings);
             Player.armor[15].SetDefaults(ItemID.AngelWings);
         }
+
+        Player.statDefense += 2 * Defense;
         
         // QOL features, autoswing and no fall damage
         Player.autoReuseAllWeapons = true;
         Player.noFallDmg = true;
-        
-        
+    }
+
+    public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
+    {
+        modifiers.Knockback *= Math.Max(0, 1f - Weight / 5f);
     }
 
     public override void PostUpdateRunSpeeds()
@@ -109,6 +119,12 @@ public class TerraTrialPlayer : ModPlayer
         Player.runSlowdown *= 1.5f;
         Player.maxRunSpeed *= 1.15f;
         Player.accRunSpeed *= 1.15f;
+    }
+
+    public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
+    {
+        // instant respawn
+        Player.respawnTimer = 0;
     }
 }
 
