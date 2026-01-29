@@ -18,4 +18,19 @@ Items: {
 		DisplayName: Speed Patch
 		Tooltip: ""
 	}
+
+	DefensePatch: {
+		DisplayName: Defense Patch
+		Tooltip: ""
+	}
+
+	AgilityPatch: {
+		DisplayName: Agility Patch
+		Tooltip: ""
+	}
+
+	WeightPatch: {
+		DisplayName: Weight Patch
+		Tooltip: ""
+	}
 }
